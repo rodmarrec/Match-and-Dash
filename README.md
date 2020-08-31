@@ -33,17 +33,18 @@ Taking the traditional concentration card game, also known as memory, and making
 2. If User beats the timer, they win the round and receive a window that shows their stats. This window marks the end and start of the next round.
 3. A button "Ready" will indicate User how to start the next round
 4. If User loses, they will receive window that shows sim. text "Game Over" with final stats
-5. WIndow will include text "Play Again?" with two buttons: "Yes" and "No"
-6. "No" button will prompt starter window (point 1.0)
+5. Window will include text "Play Again?" with two buttons: "Yes" and "No"
+6. "No" button will prompt starter window (point 1.1)
 7. "Yes" will immediately restart game. Stats will be cleared, Round and difficult will be reset, and timer will begin.
 
 #### 4.0 - INCREMENTAL DIFFICULTY
 1. Every 2 or 3 rounds the number of cards to match will be multiplied by 1/2 or 1/3 and timer will be reduced by 5s
 
 ## Stretch Goals
-* Along with increasing number of cards to match and decreasing time, the graphics on the card also change. 
-        * ex: Easy rounds involve matching colors
-        * increase difficulty to cards with similar colors and patterns but alternating between different pairs
-        * Stroop Effect cards and match word with card that matches the word's meaning, not the text color. -- this would require window inbetween rounds to provide additional instructions of how to match
+* As Round # increases the graphics on the card also change. Changing the User's expectations of what they need to match. 
+* Idea 1: Easy rounds involve matching colors
+* Idea 2: increase difficulty to cards by using similar colors and patterns but placing colors in different places. A card divided into 4 squares where diagonals alternate colors and another pair have same colors but in opposite boxes.
+* Idea 3: Stroop Effect cards and match word with card that matches the word's meaning, not the text color. -- this would require window inbetween rounds to provide additional instructions of how to match
 * Setting a static "Record time" for each round for the User to compete against
 * Create a Top Score board (sim. to PacMan) where User can input their 3 letters/numbers. Record stats: Round reached, total score, total clicks
+* Top Score would encourage sharing game with friends and family
