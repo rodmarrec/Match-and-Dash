@@ -24,11 +24,12 @@ console.log("It's here, inside your mind...");
     (2) -   perhaps DeckA and DeckB will have same values and only differentiator is whether it is productA or productB 
     (2) -   for loop with conditional statement. We want tiles(objects) to be ordered when using comparison value
     (2) after will figure out how to end round if all tiles have been matched
-    (2) add grid of tiles and columns 
+    √   (2) add grid of tiles and columns 
     (2) - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout
 
     (3) assign tiles to have corresponding graphic... somehow
     √   (3) -   randmoize values 
+    (3) add animations to cards with css animate
  */   
 
 //NOTE 1: event listener on button
