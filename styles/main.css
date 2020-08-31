@@ -20,6 +20,7 @@ body {
 .tiles:hover {
     box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
     transform: translateX(-3px);
+    transform: scale(1.1); 
 }
 
 .wrapper {
