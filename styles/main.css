@@ -5,6 +5,19 @@ body {
     font-family: 'Teko', sans-serif;
 }
 
+.tiles div {
+    width:  5vh;
+    height: 5vh;
+    margin-right: 1%;
+    display: inline-block;
+    background-color: blue;
+  }
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+  }
+
 #btn {
     width: 100%;
     height: 100%;
@@ -22,3 +35,5 @@ body {
     background-color: rgb(241, 238, 37);
     color: #333;
   }
+
+  
