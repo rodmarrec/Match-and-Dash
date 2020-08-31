@@ -1,4 +1,4 @@
-# Match-and-Dash
+# Match-and-Dash-Game
 ## MVP
 Taking the traditional concentration card game, also known as memory, and making it more challenging by adding a timer for the player to compete against. In each round the number of pairs needed to win the round will increase, adding pressure to the player as they hurry to match up cards and dash against time.
 
@@ -38,13 +38,14 @@ Taking the traditional concentration card game, also known as memory, and making
 7. "Yes" will immediately restart game. Stats will be cleared, Round and difficult will be reset, and timer will begin.
 
 #### 4.0 - INCREMENTAL DIFFICULTY
-1. Every 2 or 3 rounds the number of cards to match will be multiplied by 1/2 or 1/3 and timer will be reduced by 5s
+1. Every 3 rounds the number of cards to match will be multiplied by 1/2 and timer will be reduced by 5s
 
 ## Stretch Goals
 * As Round # increases the graphics on the card also change. Changing the User's expectations of what they need to match. 
 * Idea 1: Easy rounds involve matching colors
 * Idea 2: increase difficulty to cards by using similar colors and patterns but placing colors in different places. A card divided into 4 squares where diagonals alternate colors and another pair have same colors but in opposite boxes.
 * Idea 3: Stroop Effect cards and match word with card that matches the word's meaning, not the text color. -- this would require window inbetween rounds to provide additional instructions of how to match
+* As card graphics get harder to match, more time might need to be given in higher rounds. Would need more than one timer function to match difficulty level
 * Setting a static "Record time" for each round for the User to compete against
 * Create a Top Score board (sim. to PacMan) where User can input their 3 letters/numbers. Record stats: Round reached, total score, total clicks
 * Top Score would encourage sharing game with friends and family
