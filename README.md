@@ -20,11 +20,11 @@ Taking the traditional concentration card game, also known as memory, and making
 #### 1.0 - START OF GAME
 1. The user is received by a window with game name and laying out game rules: timer, score system, and how difficulty will increase
 2. Include that upon clicking "Start Game" the timer will immediately start.
-3. The window has button with "Start Game". Upon click, window clears and timer starts
+3. The window has button with "Start Game". Upon click, window clears and timer and round 1 begin
 
 #### 2.0 - GAME PLAY
 1. User competes against time as they try to match up all pairs within the allotted time while also cognizant of their total click count, and their score
-2. Score will be on a basis of +10-20 points for a match, and -1 points for exploratory or wrong pairs. 
+2. Score will be on a basis of +10-20 points for a match, and -1 points for exploratory clicks or wrong pairs. 
 3. Score will not drop below zero since beginning of each round has to involve exploratory clicks
 4. While playing, user has view of all of their stats: Round #, time left, # of pairs left to complete round, their total score, and total click count
 
