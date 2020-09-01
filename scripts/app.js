@@ -10,7 +10,7 @@ console.log("It's here, inside your mind...");
     √   (1) name of game
     √   (1) timer on browser
     √ (1) - count down
-    (1) create tiles on browser
+    √ (1) create tiles on browser
     √   (1) score on browser
     √   (1) - count up       
     √   (1) round # on browser
@@ -21,7 +21,7 @@ console.log("It's here, inside your mind...");
     (1) end game when timer reaches 0 (focus on this to start)
     (1) create game play area in browser
 
-    (2) -   two factories: Deck A and Deck B-> Ref Pokemon OOP
+    (2) -   create one array that matches up with the font awesome icons used in 
     (2) -   perhaps DeckA and DeckB will have same values and only differentiator is whether it is productA or productB 
     (2) -   for loop with conditional statement. We want tiles(objects) to be ordered when using comparison value
     (2) after will figure out how to end round if all tiles have been matched
@@ -31,18 +31,19 @@ console.log("It's here, inside your mind...");
     (3) assign tiles to have corresponding graphic... somehow
     √   (3) -   randmoize values 
     (3) add animations to cards with css animate
-    (3) click counter
+    (3) click# total counter
  */   
 
 //ANCHOR 1: event listener on button
 //button sanity check - 1st easy thing to do
  $("button").on('click', function(){
     console.log("==== Get Set, Match! Dash! ======");
-    $(".tiles").empty();
+    // $(".tiles").empty(); -- not sure if we need function in mvp
     setUpRound();
 }); 
 // √
 
+/* //---------------------------------- MAY NOT NEED THESE BLOCKS -----------------------------
 // const $singleTile = $("<div class='tile' />"); //create tiles as div
 //     console.log($singleTile); 
     //√
@@ -66,6 +67,12 @@ const applyRandomColor = function(){
     const randomIndex = Math.floor(Math.random() * colorsArr.length);
     return colorsArr[randomIndex];   
 } 
+//---------------------------------- MAY NOT NEED THESE BLOCKS -----------------------------  */
+
+
+
+
+
 // console.log(applyRandomColor());
 // √
 
