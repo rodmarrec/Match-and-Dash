@@ -107,10 +107,11 @@ $(".tiles").on("click", (".tiles"), doFlip); //REVIEW what does this do exactly?
 let $round = $("#round")
 $round = 0; //
 // √
+let timer;
 
 //ANCHOR 6: Timer
 const setTimer = function(){ //seTimer function not being invoked
-    let timer = setInterval(function(){
+    timer = setInterval(function(){
         if(timer === 0){ //FIXME introduce stop to round once timer reaches zero(pause game)
             clearInterval(timer); //clearInterval() also built into js. and will stop timer
             $round++;
