@@ -19,8 +19,8 @@ console.log("It's here, inside your mind...");
     √   (1) end game when timer reaches 0 (focus on this to start)
     (1) create game play area in browser
 
-    (2) create one array that matches up with the font awesome icons used in 
-    (2) MakeTiles function that will take array as argument and duplicate it(pairs)
+    √   (2) create one array that matches up with the font awesome icons used in 
+    √   (2) MakeTiles function that will take array as argument and duplicate it(pairs)
     (2) -   for loop that will pass both arrays
     (2) -   join arrays into one
     (2) -   and append elements in those array to <td> in html
@@ -39,31 +39,24 @@ console.log("It's here, inside your mind...");
 // first create array with images - 12 images for 24 cards total
 
 const tilesArr = [ //8 tiles
-    {
-        value: ".fa-maxcdn"
-    }, {
-        value: ".fa-mastodon"
-    }, {
-        value: ".fa-monero"
-    }, {
-        value: ".fa-medium"
-    }, {
-        value: ".fa-markdown"
-    }, {
-        value: ".fa-mendeley"
-    }, {
-        value: ".fa-meetup"
-    }, {
-        value: ".fa-magento"
-    },
+      "fa-maxcdn",
+      "fa-mastodon",
+      "fa-monero",
+      "fa-medium",
+      "fa-markdown",
+      "fa-mendeley",
+      "fa-meetup",
+      "fa-magento", 
 ];
-console.log(tilesArr);
+
+// console.log(tilesArr);
 // √
 
 
 const start = function(){
-    startTimer();
+    // startTimer();
     generateTiles();
+    $("#btn").hide();
 
 }
 
@@ -76,6 +69,7 @@ $("#btn").on('click', start)
 
 
 
+
 /**
  * creates duplicate of tileArr to create pairings. appends objects to <td> tags. calls on internal shuffle method
  */
@@ -83,31 +77,40 @@ const generateTiles = function(){
 
 //duplicates array
 tilesArrCopy = [...tilesArr]
-console.log(tilesArrCopy);
-// √
+// console.log(tilesArrCopy);
+// // √
 
 //combines two arrays
 const combinedArr = tilesArr.concat(tilesArrCopy);
-console.log(combinedArr);
-// √
+// console.log(combinedArr);
+// // √
 
+//container holding tileCell <td> and its child <i>
+const $tileCell = $(".tileCell>.fab"); 
+// console.log({$tileCell});
+// // √
 
-const $tileTds = $(".allTiles");
-console.log($tileTds);
-// √
-
-
-document.addEventListener('click', function () {
-    $('.fa-maxcdn').on('click', function () {  // we are letting the td bind to the event
-      alert('This works, though');
-    });
+$tileCell.each(function(index,tile){
+    const randomClass = combinedArr.splice(Math.floor(Math.random() * combinedArr.length -1),1)[0];
+    $(tile).addClass(randomClass);
+  console.log(randomClass);
 });
 // √ sanity check
 
 
 
 
-////////////////////PAUSE
+
+
+
+
+
+
+
+
+
+
+////////////////////PAUSE//////////////////////
 // const $tileSpan = $("<span>");
 
 // //create a new <span> tag with a class of "uniqueTile" and append to existing <td> tags
@@ -123,11 +126,6 @@ document.addEventListener('click', function () {
 // }
 
 
-
-
-///////////////////////
-// create for loop that runs through shuffledArr and appends each element [i] to a .tile <td> tag
-// for(let i = 0; i < combinedArr.length; i++)
 
 
 //shuffle after objects have been appended to <td> tags
@@ -152,37 +150,27 @@ function shuffle() {
     }
     }
 
-
-
 }
 
 
 
 
-
-
-
-
-
-
-// let $round = $("#round");
-// $round = 0; //
-// √
+/////////////////////////////////////
 let timer = 30;
 
-//NOTE startTimer()
-function startTimer() {
-    interval = setInterval(function(){
-        $("#timer").text(`Yous have: ${timer} seconds left.`)
-        if(timer === 0){
-            clearInterval(interval);
-        }
-            // $round++;
-            // $("#round").text(`Round ${$round}`);
-            // timer = 20 - ($round*2); 
+// //NOTE startTimer()
+// function startTimer() {
+//     interval = setInterval(function(){
+//         $("#timer").text(`Yous have: ${timer} seconds left.`)
+//         if(timer === 0){
+//             clearInterval(interval);
+//         }
+//             // $round++;
+//             // $("#round").text(`Round ${$round}`);
+//             // timer = 20 - ($round*2); 
         
-        console.log(timer);
-        timer--
-    }, 1000)
-}
-// √
+//         console.log(timer);
+//         timer--
+//     }, 1000)
+// }
+// // √
