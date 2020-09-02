@@ -38,47 +38,86 @@ console.log("It's here, inside your mind...");
 
 // first create array with images - 12 images for 24 cards total
 
-const tilesArr = [
+const tilesArr = [ //8 tiles
     {
-        value: "1"
+        value: ".fa-maxcdn"
     }, {
-        value: "2"
+        value: ".fa-mastodon"
     }, {
-        value: "3"
+        value: ".fa-monero"
     }, {
-        value: "4"
+        value: ".fa-medium"
     }, {
-        value: "5"
+        value: ".fa-markdown"
     }, {
-        value: "6"
+        value: ".fa-mendeley"
     }, {
-        value: "7"
+        value: ".fa-meetup"
     }, {
-        value: "8"
-    }, {
-        value: "9"
-    }, {
-        value: "10"
-    }, {
-        value: "11"
-    }, {
-        value: "12"
+        value: ".fa-magento"
     },
 ];
+console.log(tilesArr);
+// √
 
+//NOTE btn GO event
 $("button").on('click', function(){
     console.log("==== Get Set, Match! Dash! ======");
     startTimer();
-    // setUpRound();
+    setTiles();
 }); 
 // √
 
-let $round = $("#round");
-$round = 0; //
+
+/**
+ * creates duplicate of tileArr to create pairings. calls on internal shuffle method
+ */
+const setTiles = function(){
+
+
+tilesArrCopy = [...tilesArr]
+console.log(tilesArrCopy);
+// √
+
+const combinedArr = tilesArr.concat(tilesArrCopy);
+console.log(combinedArr);
+// √
+shuffle(combinedArr);
+// √
+
+/**
+ * the Fisher Yates shuffle randomizes the internal cards array (this.cards)
+ *  @author  Mike Bostock  https://bost.ocks.org/mike/shuffle/
+ */
+function shuffle() {
+    let length = combinedArr.length; 
+    let element; //variable declared for function
+    let index; //variable declared for function
+
+    while (length) {
+        index = Math.floor(Math.random() * length--);
+        element = combinedArr[length];
+        combinedArr[length] = combinedArr[index];
+        combinedArr[index] = element;
+    }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// let $round = $("#round");
+// $round = 0; //
 // √
 let timer = 30;
 
-
+//NOTE startTimer()
 function startTimer() {
     interval = setInterval(function(){
         $("#timer").text(`Yous have: ${timer} seconds left.`)

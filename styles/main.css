@@ -40,7 +40,7 @@ header-stats {
     text-align: center;
     background-color: rgba(217, 255, 236, 0.877); 
     color: #169e81;
-    border: 1.5px solid #ffffff2f;
+    /* border: 1.5px solid #ffffff2f; */
     border-radius: 6px;
     height: 45px;
     transition: all 0.2s ease-in-out;
@@ -50,6 +50,7 @@ header-stats {
 .tile:hover {
     box-shadow: 1px 1px #db7a0a, 3px 3px #db7a0a, 5px 5px #db7a0a;
     transform: translateX(-4px);   
+       
 }
   
 
