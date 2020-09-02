@@ -60,29 +60,79 @@ const tilesArr = [ //8 tiles
 console.log(tilesArr);
 // √
 
-//NOTE btn GO event
-$("button").on('click', function(){
-    console.log("==== Get Set, Match! Dash! ======");
+
+const start = function(){
     startTimer();
-    setTiles();
-}); 
+    generateTiles();
+
+}
+
+//NOTE btn GO event
+$("#btn").on('click', start)
+    // console.log("==== Get Set, Match! Dash! ======");
+    
 // √
 
 
+
+
 /**
- * creates duplicate of tileArr to create pairings. calls on internal shuffle method
+ * creates duplicate of tileArr to create pairings. appends objects to <td> tags. calls on internal shuffle method
  */
-const setTiles = function(){
+const generateTiles = function(){
 
-
+//duplicates array
 tilesArrCopy = [...tilesArr]
 console.log(tilesArrCopy);
 // √
 
+//combines two arrays
 const combinedArr = tilesArr.concat(tilesArrCopy);
 console.log(combinedArr);
 // √
-shuffle(combinedArr);
+
+
+const $tileTds = $(".allTiles");
+console.log($tileTds);
+// √
+
+
+document.addEventListener('click', function () {
+    $('.fa-maxcdn').on('click', function () {  // we are letting the td bind to the event
+      alert('This works, though');
+    });
+});
+// √ sanity check
+
+
+
+
+////////////////////PAUSE
+// const $tileSpan = $("<span>");
+
+// //create a new <span> tag with a class of "uniqueTile" and append to existing <td> tags
+// for(let i = 0; i < combinedArr.length; i++) {
+// const $tileSpan = $("<span>");
+// $tileSpan.addClass("singleTile")
+// $tileSpan.text(combinedArr[i]); 
+//     console.log($tileSpan);
+
+// $tileTd.append($tileSpan);
+//     console.log($tileTd)
+
+// }
+
+
+
+
+///////////////////////
+// create for loop that runs through shuffledArr and appends each element [i] to a .tile <td> tag
+// for(let i = 0; i < combinedArr.length; i++)
+
+
+//shuffle after objects have been appended to <td> tags
+const shuffledArr = shuffle(combinedArr);
+console.log(shuffledArr)
 // √
 
 /**
@@ -101,6 +151,9 @@ function shuffle() {
         combinedArr[index] = element;
     }
     }
+
+
+
 }
 
 

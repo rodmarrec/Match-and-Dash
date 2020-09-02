@@ -1,7 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap");
 
+:root {
+    /*  colors  */
+      --main: rgb(34, 41, 47);
+      --tile-background: rgba(217, 255, 236, 0.877);
+      --highlight: #db7a0a;
+
+    }
+
 body {
-    background-color: rgb(50, 53, 56);
+    background: var(--main);
     color: rgba(217, 255, 236, 0.877);
     font-family: 'Teko', sans-serif;
     width: 100%;
@@ -29,16 +37,16 @@ header-stats {
   }
   
   #btn:hover {
-    background-color: #eb8714;
+    background-color: var(--highlight);
     color: #333;
   }
 
-.tile {
+.allTiles {
     width:  10vh;
     height: 10vh;
     margin-right: 1%;
     text-align: center;
-    background-color: rgba(217, 255, 236, 0.877); 
+    background-color: var(--tile-background); 
     color: #169e81;
     /* border: 1.5px solid #ffffff2f; */
     border-radius: 6px;
@@ -47,13 +55,15 @@ header-stats {
    
   }
 
-.tile:hover {
-    box-shadow: 1px 1px #db7a0a, 3px 3px #db7a0a, 5px 5px #db7a0a;
+.allTiles:hover {
+    box-shadow: 1px 1px var(--highlight), 3px 3px var(--highlight), 5px 5px var(--highlight);
     transform: translateX(-4px);   
        
 }
   
 
-
+.room.highlight {
+    background: teal;
+  }
 
   
