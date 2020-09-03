@@ -113,26 +113,70 @@ $tdCellIcon.each(function(index,eachTiles) {
 
 });
 
-//Flip tiles
-const $tiles = document.querySelectorAll('.tdCell');
-    $(".tdCell").append('<li class="clicked>')
-    console.log($tiles)
+//Flip tiles and test match
+const allTiles = document.querySelectorAll('.tdCell');
+    // $(".tdCell").append('<li class="clicked>')
+    // console.log(allTiles)
 
 
 function flipTile() {
-    this.classList.add('flip');
+    this.classList.add('flipped'); //adds condition class from css
+    // this.classList.add('flipped');
+
+
+    let $firstTile = $(".tdCell").find(".fab")
+        // console.log($firstTile);
+    
+    let $secondTile = $(".tdCell").find(".fab")
+        // console.log($secondTile)
+
+    let hasFlippedTile = false;
+        
+        if(!hasFlippedTile) {
+            hasFlippedTile = true;
+            $firstTile = this;
+            return;
+        }
+        
+        $secondTile = this;
+        hasFlippedTile = false;
+        
+        testPair(); //compare tiles flipped
+    }
+    
+    
+    function testPair() {
+        if ($firstTile === $secondTile) {
+        tilesDisabled();
+        return;
+        }
+
+        unFlipTiles();
+    }
+
+    function tilesDisabled() {
+        $firstTile.on('click', flipTile);
+        $secondTile.on('click',flipTile);
+    }
+
+    function unFlipTiles() {
+        setTimeout(() => {
+            $firstTile.classList.remove('flipped');
+            $secondTile.classList.remove('flipped');
+        }, 1200);
+    }
 
     
-    let hasFlippedTile = false;
-    let firstTile, secondTile;
 
 
-if(!hasFlippedTile) {
-    hasFlippedTile = true;
-    firstTile = this;
-    }
-}
 
+
+
+allTiles.forEach(tile => tile.addEventListener('click', flipTile));
+
+
+
+//counting clicks function  
 function startCounter() {
     let count = 0;
     $(".tdRow>").on('click',function() {
@@ -142,16 +186,11 @@ function startCounter() {
 }
 startCounter()
 // console.log(startCounter());
-// √
-
-$tiles.forEach(tile => tile.addEventListener('click', flipTile));
-
-} //////end of generateTile function
 
 
 
+} //------------------ end of generateTile function
 
-//counter function  /////////////////////////////////////
 
 
 

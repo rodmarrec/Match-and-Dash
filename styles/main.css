@@ -121,7 +121,7 @@ p {
     transition: transform .1s;
 } */
 
-.tdCell.flip {
+.tdCell.flipped {
     transform: rotateY(0deg);
     transform: scale(0.87);
     transition: transform .5s;
