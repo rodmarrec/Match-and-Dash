@@ -76,17 +76,17 @@ const generateTiles = function(){
 //duplicates array
 tilesArrCopy = [...tilesArr]
     // console.log(tilesArrCopy);
-// // √
+// √
 
 //combines two arrays
 const combinedArr = tilesArr.concat(tilesArrCopy);
     // console.log(combinedArr);
-// // √
+// √
 
 //container holding tdCell <td> and its child <i>
 const $tdCellIcon = $(".tdCell>.fab"); 
     // console.log({$tdCellIcon});
-// // √
+// √
 
 
 $tdCellIcon.each(function(index,eachTiles) {
@@ -111,33 +111,20 @@ $tdCellIcon.each(function(index,eachTiles) {
         // √
     }) 
 
- 
 });
 
+//Flip tiles
+const $tiles = document.querySelectorAll('.tdCell');
+    $(".tdCell").append('<li class="clicked>')
+    console.log($tiles)
 
-
-
-}
-
-function startCounter() {
-    let count = 0;
-    $(".tdCell>.fab").on('click',function() {
-    count += 1;
-    $("#counter").text(`Total Clicks: ${count}`);
-    }); 
-}
-// console.log(startCounter());
-// √
-
-
-//Flip tiles///////////////
-const tiles = document.querySelectorAll('.tdCell');
-
-let hasFlippedTile = false;
-let firstTile, secondTile;
 
 function flipTile() {
     this.classList.add('flip');
+
+    
+    let hasFlippedTile = false;
+    let firstTile, secondTile;
 
 
 if(!hasFlippedTile) {
@@ -146,14 +133,31 @@ if(!hasFlippedTile) {
     }
 }
 
+function startCounter() {
+    let count = 0;
+    $(".tdRow>").on('click',function() {
+    count += 1;
+    $("#counter").text(`Total Clicks: ${count}`);
+    }); 
+}
+startCounter()
+// console.log(startCounter());
+// √
 
-tiles.forEach(tile => tile.addEventListener('click', flipTile));
+$tiles.forEach(tile => tile.addEventListener('click', flipTile));
+
+} //////end of generateTile function
+
+
+
+
+//counter function  /////////////////////////////////////
 
 
 
 
 
-/////////////////////////////////////
+//timer function    /////////////////////////////////////
 let timer = 20;
 
 //NOTE startTimer()

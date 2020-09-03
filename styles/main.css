@@ -91,9 +91,9 @@ p {
    
 }
 
-.front-face{
+/* .front-face{
     transform: rotateY(180deg);
-}
+} */
 
 .tdCell {
     width:  90px;
@@ -104,25 +104,27 @@ p {
     color: #169e81;
     border-radius: 12px;
     transition: all 0.2s ease-in-out;
-    transform: scale(1);
+    transform: scale(1) rotateY(180deg);
     transform-style: preserve-3d;
     transition: transform .5s;
   }
 
 .tdCell:hover {
     box-shadow: 1px 1px var(--highlight), 3px 3px var(--highlight), 5px 5px var(--highlight);
-    transform: translateX(-5px); 
+    transform: translateX(-5px) rotateY(180deg); 
     background: var(--main-background);
     cursor: pointer;  
 }
 
-.tdCell:active {
+/* .tdCell:active {
     transform: scale(0.87);
     transition: transform .1s;
-}
+} */
 
 .tdCell.flip {
-    transform: rotateY(180deg);
+    transform: rotateY(0deg);
+    transform: scale(0.87);
+    transition: transform .5s;
 }
        
 footer {
