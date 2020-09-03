@@ -74,17 +74,17 @@ const generateTiles = function(){
 
 //duplicates array
 tilesArrCopy = [...tilesArr]
-// console.log(tilesArrCopy);
+    // console.log(tilesArrCopy);
 // // √
 
 //combines two arrays
 const combinedArr = tilesArr.concat(tilesArrCopy);
-// console.log(combinedArr);
+    // console.log(combinedArr);
 // // √
 
 //container holding tileCell <td> and its child <i>
 const $tileCell = $(".tileCell>.fab"); 
-// console.log({$tileCell});
+    // console.log({$tileCell});
 // // √
 
 $tileCell.each(function(index,tiles) {
@@ -93,18 +93,42 @@ $tileCell.each(function(index,tiles) {
 
     $(tiles).addClass(randomClass);
     
-    //adds event click to each icon
-    $(tiles).on("click",function(){
-        console.log("working");
-    })
+    
+    let displayCard = function (){
+        // $(tiles).toggle("open");
+        $(tiles).toggle("taco");
+        // $(tiles).toggle("pulsate");
+     }
+    //  console.log(displayCard);
+    // √
 
-    ////////////////// working function adds event
+    //adds event click to each icon
+    $(tiles).on("click",displayCard) //
+        console.log("working");
+    
+
+    //1) needs tiles to start and stay face down
+    //2) showTile function invoked by click event
+
+
+
+    ////////////////// working function adds event-SAVE
     // $(tiles).on("click",function(){
     //     console.log("working");
     // })
+    // √
     /////////////////
 
-  
+    
+
+    /////////////////////////// 
+    /**
+     * counts a move on selecting two cards
+     */
+    // function moveCounter() {
+    //     moves++;
+    //     counter.
+    // }
 
     
  
@@ -149,44 +173,18 @@ let timer = 30;
 
 
 //=============================== matching
-//add opened cards to OpenedCards list and check if cards are match or not
-// function cardOpen() {
-//     openedCards.push(this);
-//     var len = openedCards.length;
-//     if(len === 2){
-//         moveCounter();
-//         if(openedCards[0].type === openedCards[1].type){
-//             matched();
-//         } else {
-//             unmatched();
-//         }
-//     }
+// cards array holds all cards
+// let card = document.getElementsByClassName("card");
+// let cards = [...card];
+// // loop to add event listeners to each card
+// for (var i = 0; i < cards.length; i++){
+//    cards[i].addEventListener("click", displayCard);
 // };
+// //displayCard is a function we'll talk about this soon
 
-// //for when cards match
-// function matched(){
-//     openedCards[0].classList.add("match");
-//     openedCards[1].classList.add("match");
-//     openedCards[0].classList.remove("show", "open");
-//     openedCards[1].classList.remove("show", "open");
-//     openedCards = [];
-// }
-
-// //for when cards don't match
-// function unmatched(){
-//     openedCards[0].classList.add("unmatched");
-//     openedCards[1].classList.add("unmatched");
-//     disable();
-//     setTimeout(function(){
-//         openedCards[0].classList.remove("show", "open", "unmatched");
-//         openedCards[1].classList.remove("show", "open", "unmatched");
-//         enable();
-//         openedCards = [];
-//     },1100);
-// }
-
-// //disable cards temporarily
-// function disable(){
-//     Array.prototype.filter.call(cards, function(card){
-//         card.classList.add('disabled');
-//     });
+// // toggles open and show class to display cards
+// var displayCard = function (){
+//     this.classList.toggle("open");
+//     this.classList.toggle("show");
+//     this.classList.toggle("disabled");
+//  }
