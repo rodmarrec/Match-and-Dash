@@ -67,9 +67,6 @@ $("#btn").on('click', start)
 // √
 
 
-
-
-
 /**
  * creates duplicate of tileArr to create pairings. appends objects to <td> tags. calls on internal shuffle method
  */
@@ -90,67 +87,42 @@ const $tileCell = $(".tileCell>.fab");
 // console.log({$tileCell});
 // // √
 
-$tileCell.each(function(index,tile){
+$tileCell.each(function(index,tiles) {
+
     const randomClass = combinedArr.splice(Math.floor(Math.random() * combinedArr.length -1),1)[0];
-    $(tile).addClass(randomClass);
-  console.log(randomClass);
+
+    $(tiles).addClass(randomClass);
+    
+    //adds event click to each icon
+    $(tiles).on("click",function(){
+        console.log("working");
+    })
+
+    ////////////////// working function adds event
+    // $(tiles).on("click",function(){
+    //     console.log("working");
+    // })
+    /////////////////
+
+  
+
+    
+ 
+
+
 });
-// √ sanity check
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////////PAUSE//////////////////////
-// const $tileSpan = $("<span>");
-
-// //create a new <span> tag with a class of "uniqueTile" and append to existing <td> tags
-// for(let i = 0; i < combinedArr.length; i++) {
-// const $tileSpan = $("<span>");
-// $tileSpan.addClass("singleTile")
-// $tileSpan.text(combinedArr[i]); 
-//     console.log($tileSpan);
-
-// $tileTd.append($tileSpan);
-//     console.log($tileTd)
-
-// }
-
-
-
-
-//shuffle after objects have been appended to <td> tags
-const shuffledArr = shuffle(combinedArr);
-console.log(shuffledArr)
-// √
-
-/**
- * the Fisher Yates shuffle randomizes the internal cards array (this.cards)
- *  @author  Mike Bostock  https://bost.ocks.org/mike/shuffle/
- */
-function shuffle() {
-    let length = combinedArr.length; 
-    let element; //variable declared for function
-    let index; //variable declared for function
-
-    while (length) {
-        index = Math.floor(Math.random() * length--);
-        element = combinedArr[length];
-        combinedArr[length] = combinedArr[index];
-        combinedArr[index] = element;
-    }
-    }
 
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -173,4 +145,48 @@ let timer = 30;
 //         timer--
 //     }, 1000)
 // }
-// // √
+// √
+
+
+//=============================== matching
+//add opened cards to OpenedCards list and check if cards are match or not
+// function cardOpen() {
+//     openedCards.push(this);
+//     var len = openedCards.length;
+//     if(len === 2){
+//         moveCounter();
+//         if(openedCards[0].type === openedCards[1].type){
+//             matched();
+//         } else {
+//             unmatched();
+//         }
+//     }
+// };
+
+// //for when cards match
+// function matched(){
+//     openedCards[0].classList.add("match");
+//     openedCards[1].classList.add("match");
+//     openedCards[0].classList.remove("show", "open");
+//     openedCards[1].classList.remove("show", "open");
+//     openedCards = [];
+// }
+
+// //for when cards don't match
+// function unmatched(){
+//     openedCards[0].classList.add("unmatched");
+//     openedCards[1].classList.add("unmatched");
+//     disable();
+//     setTimeout(function(){
+//         openedCards[0].classList.remove("show", "open", "unmatched");
+//         openedCards[1].classList.remove("show", "open", "unmatched");
+//         enable();
+//         openedCards = [];
+//     },1100);
+// }
+
+// //disable cards temporarily
+// function disable(){
+//     Array.prototype.filter.call(cards, function(card){
+//         card.classList.add('disabled');
+//     });
