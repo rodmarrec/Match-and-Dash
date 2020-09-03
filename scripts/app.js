@@ -57,6 +57,7 @@ const start = function(){
     // startTimer();
     generateTiles();
     $("#btn").hide();
+    
 
 }
 
@@ -83,41 +84,38 @@ const combinedArr = tilesArr.concat(tilesArrCopy);
 // // √
 
 //container holding tdCell <td> and its child <i>
-const $tdCell = $(".tdCell>.fab"); 
-    // console.log({$tdCell});
+const $tdCellIcon = $(".tdCell>.fab"); 
+    // console.log({$tdCellIcon});
 // // √
 
 
-$tdCell.each(function(index,tiles) {
+$tdCellIcon.each(function(index,eachTiles) {
 
     const randomClass = combinedArr.splice(Math.floor(Math.random() * combinedArr.length -1),1)[0];
 
-    $(tiles).addClass(randomClass);
+    $(eachTiles).addClass(randomClass);
     // console.log(combinedArr);
     
-    const hideTile = function (){
-        $(tiles).hide();
-     }
-    //  console.log(hideTile());
-    // √
-    const showTile = function (){
-        $(tiles).show();
-     }
+    // const hideTile = function (){
+    //     $(eachTiles).hide();
+    //  }
+
+    // const showTile = function (){
+    //     $(eachTiles).show();
+    //  }
 
     // adds event click to each icon
-    $(tiles).on("click",function(){
-        hideTile();
-     
-        // console.log("working");
+    $(eachTiles).on("click",function(){
+        // hideTile();
+        console.log("working");
         // √
     }) 
 
  
 });
 
-// $countClick = $("#counter");
-//         console.log($countClick)
-   
+
+
 
 }
 
@@ -128,45 +126,51 @@ function startCounter() {
     $("#counter").text(`Total Clicks: ${count}`);
     }); 
 }
-console.log(startCounter());
+// console.log(startCounter());
 // √
+
+
+//Flip tiles///////////////
+const tiles = document.querySelectorAll('.tdCell');
+
+let hasFlippedTile = false;
+let firstTile, secondTile;
+
+function flipTile() {
+    this.classList.add('flip');
+
+
+if(!hasFlippedTile) {
+    hasFlippedTile = true;
+    firstTile = this;
+    }
+}
+
+
+tiles.forEach(tile => tile.addEventListener('click', flipTile));
+
+
 
 
 
 /////////////////////////////////////
-let timer = 30;
+let timer = 20;
 
 //NOTE startTimer()
-// function startTimer() {
-//     interval = setInterval(function(){
-//         $("#timer").text(`Seconds left: ${timer}`)
-//         if(timer === 0){
-//             clearInterval(interval);
-//         }
-//             // $round++;
-//             // $("#round").text(`Round ${$round}`);
-//             // timer = 20 - ($round*2); 
+function startTimer() {
+    interval = setInterval(function(){
+        $("#timer").text(`Seconds left: ${timer}`)
+        if(timer === 0){
+            clearInterval(interval);
+        }
+            // $round++;
+            // $("#round").text(`Round ${$round}`);
+            // timer = 20 - ($round*2); 
         
-//         console.log(timer);
-//         timer--
-//     }, 1000)
-// }
+        console.log(timer);
+        timer--
+    }, 1000)
+}
 // √
 
 
-//=============================== matching
-// cards array holds all cards
-// let card = document.getElementsByClassName("card");
-// let cards = [...card];
-// // loop to add event listeners to each card
-// for (var i = 0; i < cards.length; i++){
-//    cards[i].addEventListener("click", displayCard);
-// };
-// //displayCard is a function we'll talk about this soon
-
-// // toggles open and show class to display cards
-// var displayCard = function (){
-//     this.classList.toggle("open");
-//     this.classList.toggle("show");
-//     this.classList.toggle("disabled");
-//  }
