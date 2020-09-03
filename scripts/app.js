@@ -82,82 +82,64 @@ const combinedArr = tilesArr.concat(tilesArrCopy);
     // console.log(combinedArr);
 // // √
 
-//container holding tileCell <td> and its child <i>
-const $tileCell = $(".tileCell>.fab"); 
-    // console.log({$tileCell});
+//container holding tdCell <td> and its child <i>
+const $tdCell = $(".tdCell>.fab"); 
+    // console.log({$tdCell});
 // // √
 
-$tileCell.each(function(index,tiles) {
+
+$tdCell.each(function(index,tiles) {
 
     const randomClass = combinedArr.splice(Math.floor(Math.random() * combinedArr.length -1),1)[0];
 
     $(tiles).addClass(randomClass);
+    // console.log(combinedArr);
     
-    
-    let displayCard = function (){
-        // $(tiles).toggle("open");
-        $(tiles).toggle("taco");
-        // $(tiles).toggle("pulsate");
+    const hideTile = function (){
+        $(tiles).hide();
      }
-    //  console.log(displayCard);
+    //  console.log(hideTile());
     // √
+    const showTile = function (){
+        $(tiles).show();
+     }
 
-    //adds event click to each icon
-    $(tiles).on("click",displayCard) //
-        console.log("working");
-    
+    // adds event click to each icon
+    $(tiles).on("click",function(){
+        hideTile();
+     
+        // console.log("working");
+        // √
+    }) 
 
-    //1) needs tiles to start and stay face down
-    //2) showTile function invoked by click event
-
-
-
-    ////////////////// working function adds event-SAVE
-    // $(tiles).on("click",function(){
-    //     console.log("working");
-    // })
-    // √
-    /////////////////
-
-    
-
-    /////////////////////////// 
-    /**
-     * counts a move on selecting two cards
-     */
-    // function moveCounter() {
-    //     moves++;
-    //     counter.
-    // }
-
-    
  
-
-
 });
+
+// $countClick = $("#counter");
+//         console.log($countClick)
+   
 
 }
 
-
-
-
-
-
-
-
-
-
-
+function startCounter() {
+    let count = 0;
+    $(".tdCell>.fab").on('click',function() {
+    count += 1;
+    $("#counter").text(`Total Clicks: ${count}`);
+    }); 
+}
+console.log(startCounter());
+// √
 
 
 
 /////////////////////////////////////
 let timer = 30;
 
-// //NOTE startTimer()
+//NOTE startTimer()
 // function startTimer() {
 //     interval = setInterval(function(){
-//         $("#timer").text(`Yous have: ${timer} seconds left.`)
+//         $("#timer").text(`Seconds left: ${timer}`)
 //         if(timer === 0){
 //             clearInterval(interval);
 //         }
