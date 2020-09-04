@@ -10,30 +10,29 @@ console.log("It's here, inside your mind...");
     √   (1) name of game
     √   (1) timer on browser
     √   (1) - count down
-    √   (1) create tiles on browser
-    √   (1) score on browser
-    (1) - count up       
+    √   (1) create tiles on browser       
     √   (1) start game at click
-    (1) have tiles be able to match up in a pair (creating value pairs)-- start with 1 color only
-    (1) - have 2 or more tiles match up
+    √   (1) - have max. 2 tiles be face-up at once
     √   (1) end game when timer reaches 0 (focus on this to start)
-    (1) create game play area in browser
+    √   (1) create game play area in browser
 
     √   (2) create one array that matches up with the font awesome icons used in 
     √   (2) MakeTiles function that will take array as argument and duplicate it(pairs)
-    (2) -   for loop that will pass both arrays
-    (2) -   join arrays into one
-    (2) -   and append elements in those array to <td> in html
-    (2) flipTile function to add event listener for click to each tile
+    √   (2) -   join arrays into one
+    (2) compare tiles to test and find Match.
+    (2) -   apply conditional class from css to indicate tiles have been matched
+    √   (2) flipTile function to add event listener for click to each tile
     √   (2) add grid of tiles and columns 
 
     √   (3) -   randmoize values 
     √   (3) add animations to cards with css animate
-    (3) click# total counter
+    √   (3) click# total counter
 
     (-) round # on browser (stretch goal)
     (-) - increase round # (stretch goal)
     (-) assign tiles to have corresponding graphic... somehow (stretch goal)
+    (-) score on browser (stretch goal)
+    (-) - count up (stretch goal)
  */   
 
 // first create array with images - 12 images for 24 cards total
@@ -109,16 +108,17 @@ $tdCellIcon.each(function(index,eachTiles) {
     }) 
 
     $(eachTiles).attr('alt',randomClass)
-    // √
+        // √
+    
 
 });
 
 
-    let $firstTile = $(".tdCell").find(".fab.fa") //path not working for comparing strings
-    // console.log($firstTile);
+    let $firstTile = $(".tdCell").find(".fab") //path not working for comparing strings
+    console.log($firstTile);
 
     let $secondTile = $(".tdCell").find(".fab") //path not working comparing strings
-    // console.log($secondTile)
+    console.log($secondTile)
 
     // for( eachTile of )
 
@@ -129,7 +129,7 @@ $tdCellIcon.each(function(index,eachTiles) {
     let hasFlippedTile = false;
     let lockTileBoard = false;
 
-    let points = 0;
+    // let points = 0;
 
 
 
@@ -144,12 +144,10 @@ function flipTile() {
         if(!hasFlippedTile) {
             hasFlippedTile = true;
             $firstTile = this;
-            // console.log(`1st: is this working? -- ${this}`); --> path not working
             return;
         }
         
         $secondTile = this;
-        // console.log(`2nd: is this working? -- ${this}`); --> path not working
         lockTileBoard = true;
         
         testPair(); //compare tiles flipped
@@ -160,7 +158,7 @@ function flipTile() {
 
         if ($firstTile === $secondTile) {
             tilesDisabled();
-            points + 15
+            // points + 15
             return;
         }else {
             unFlipTiles();
@@ -211,7 +209,7 @@ function startCounter() {
     count += 1;
     $("#counter").text(`Total Clicks: ${count}`);
 
-    points -= 1;
+    // points -= 1;
     $()
     }); 
 }
