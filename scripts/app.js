@@ -91,23 +91,16 @@ const $tdCellIcon = $(".tdCell>.fab");
 
 $tdCellIcon.each(function(index,eachTiles) {
 
-    const randomClass = combinedArr.splice(Math.floor(Math.random() * combinedArr.length -1),1)[0];
+    let randomClass = []
 
-    const randomClassArr = combinedArr.splice(Math.floor(Math.random() * combinedArr.length-1),16)[0];
-    console.log(randomClass)
-
+    randomClass = combinedArr.splice(Math.floor(Math.random() * combinedArr.length -1),1)[0];
+    // console.log(randomClass)
+    // √
 
     $(eachTiles).addClass(randomClass);
     // console.log(combinedArr);
     
-    // const hideTile = function (){
-    //     $(eachTiles).hide();
-    //  }
-
-    // const showTile = function (){
-    //     $(eachTiles).show();
-    //  }
-
+  
     // adds event click to each icon
     $(eachTiles).on("click",function(){
         // hideTile();
@@ -115,13 +108,16 @@ $tdCellIcon.each(function(index,eachTiles) {
         // √
     }) 
 
+    $(eachTiles).attr('alt',randomClass)
+    // √
+
 });
 
 
-    let $firstTile = $(".tdCell").find(".fab.fa")
+    let $firstTile = $(".tdCell").find(".fab.fa") //path not working for comparing strings
     // console.log($firstTile);
 
-    let $secondTile = $(".tdCell").find(".fab")
+    let $secondTile = $(".tdCell").find(".fab") //path not working comparing strings
     // console.log($secondTile)
 
     // for( eachTile of )
@@ -132,6 +128,8 @@ $tdCellIcon.each(function(index,eachTiles) {
 
     let hasFlippedTile = false;
     let lockTileBoard = false;
+
+    let points = 0;
 
 
 
@@ -146,20 +144,23 @@ function flipTile() {
         if(!hasFlippedTile) {
             hasFlippedTile = true;
             $firstTile = this;
-            // console.log(`1st: is this working? -- ${this}`); -- path not working
+            // console.log(`1st: is this working? -- ${this}`); --> path not working
             return;
         }
         
         $secondTile = this;
-        // console.log(`2nd: is this working? -- ${this}`); -- path not working
+        // console.log(`2nd: is this working? -- ${this}`); --> path not working
         lockTileBoard = true;
         
         testPair(); //compare tiles flipped
     }
     
     function testPair() {
+        
+
         if ($firstTile === $secondTile) {
             tilesDisabled();
+            points + 15
             return;
         }else {
             unFlipTiles();
@@ -206,8 +207,12 @@ allTiles.forEach(tile => tile.addEventListener('click', flipTile));
 function startCounter() {
     let count = 0;
     $(".tdRow").on('click',function() {
+
     count += 1;
     $("#counter").text(`Total Clicks: ${count}`);
+
+    points -= 1;
+    $()
     }); 
 }
 startCounter()
