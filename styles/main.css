@@ -116,16 +116,17 @@ p {
     cursor: pointer;  
 }
 
-/* .tdCell:active {
-    transform: scale(0.87);
-    transition: transform .1s;
-} */
 
 .tdCell.flipped {
     transform: rotateY(0deg);
     transform: scale(0.87);
-    transition: transform .5s;
+    transition: transform .6s;
 }
+
+/* .tdCell.matched {
+    color: #169e8188;
+    background-color: rgba(227, 255, 241, 0.582);
+} */
        
 footer {
     text-align: center;

@@ -67,6 +67,12 @@ $("#btn").on('click', start)
     
 // √
 
+let $firstTile = $(".tdCell").find(".fab")
+// console.log($firstTile);
+
+let $secondTile = $(".tdCell").find(".fab")
+// console.log($secondTile)
+
 
 /**
  * creates duplicate of tileArr to create pairings. appends objects to <td> tags. calls on internal shuffle method
@@ -113,25 +119,30 @@ $tdCellIcon.each(function(index,eachTiles) {
 
 });
 
-//Flip tiles and test match
-const allTiles = document.querySelectorAll('.tdCell');
-    // $(".tdCell").append('<li class="clicked>')
-    // console.log(allTiles)
-
-
-function flipTile() {
-    this.classList.add('flipped'); //adds condition class from css
-    // this.classList.add('flipped');
-
-
-    let $firstTile = $(".tdCell").find(".fab")
-        // console.log($firstTile);
-    
-    let $secondTile = $(".tdCell").find(".fab")
-        // console.log($secondTile)
+    //Flip tiles and test match
+    const allTiles = document.querySelectorAll('.tdCell');
 
     let hasFlippedTile = false;
-        
+    let lockTileBoard = false;
+
+    // let $firstTile = $(".tdCell").find(".fab")
+    //     // console.log($firstTile);
+    
+    // let $secondTile = $(".tdCell").find(".fab")
+    //     // console.log($secondTile)
+    
+// function matchFound() {///=----------- may not need
+//     this.classList.add('matched');
+// }
+
+function flipTile() {
+    // this.classList.toggle('flipped');
+    if (lockTileBoard) return;
+    if (this === $firstTile) return;
+
+    this.classList.add('flipped'); //adds conditional class from css
+    
+
         if(!hasFlippedTile) {
             hasFlippedTile = true;
             $firstTile = this;
@@ -139,37 +150,46 @@ function flipTile() {
         }
         
         $secondTile = this;
-        hasFlippedTile = false;
+        lockTileBoard = true;
         
         testPair(); //compare tiles flipped
     }
     
-    
     function testPair() {
         if ($firstTile === $secondTile) {
-        tilesDisabled();
-        return;
+            tilesDisabled();
+            return;
+        }else {
+            unFlipTiles();
         }
-
-        unFlipTiles();
     }
 
     function tilesDisabled() {
-        $firstTile.on('click', flipTile);
-        $secondTile.on('click',flipTile);
+        $firstTile.off('click', flipTile);
+        $secondTile.off('click', flipTile);
+
+        resetBoard();
     }
 
     function unFlipTiles() {
+
         setTimeout(() => {
             $firstTile.classList.remove('flipped');
             $secondTile.classList.remove('flipped');
-        }, 1200);
+
+            // lockTileBoard = false; //unflips tiles by removing .flipped and enables clicking on tile board //delete
+            resetBoard();
+        }, 1300);
     }
 
+    function resetBoard() {
+        [hasFlippedTile, lockTileBoard] = [false, false];
+        [$firstTile, $secondTile] = [null, null];
+    }
+
+ 
+
     
-
-
-
 
 
 allTiles.forEach(tile => tile.addEventListener('click', flipTile));
