@@ -83,7 +83,7 @@ const combinedArr = tilesArr.concat(tilesArrCopy);
 // √
 
 //container holding tdCell <td> and its child <i>
-const $tdCellIcon = $(".tdCell>.fab"); 
+const $tdCellIcon = $(".tdCell"); 
     // console.log({$tdCellIcon});
 // √
 
@@ -96,16 +96,15 @@ $tdCellIcon.each(function(index,eachTiles) {
     // console.log(randomClass)
     // √
 
-    $(eachTiles).addClass(randomClass);
+    console.log($(eachTiles))
+
+    $(eachTiles).find("i").addClass(randomClass);
     // console.log(combinedArr);
     
   
     // adds event click to each icon
-    $(eachTiles).on("click",function(){
-        // hideTile();
-        console.log("working");
-        // √
-    }) 
+    $(eachTiles).on("click",flipTile)
+     
 
     $(eachTiles).attr('alt',randomClass)
         // √
@@ -114,47 +113,82 @@ $tdCellIcon.each(function(index,eachTiles) {
 });
 
 
-    let $firstTile = $(".tdCell").find(".fab") //path not working for comparing strings
-    console.log($firstTile);
 
-    let $secondTile = $(".tdCell").find(".fab") //path not working comparing strings
-    console.log($secondTile)
+let target1 = null;
+let target2 = null;
+
+//Flip tiles and test match
+// const allTiles = document.querySelectorAll('.tdCell');
+
+let hasFlippedTile = false;
+let lockTileBoard = false;
+
+// let points = 0;
+
+let $firstTile;
+let $secondTile;
 
 
-    //Flip tiles and test match
-    const allTiles = document.querySelectorAll('.tdCell');
-
-    let hasFlippedTile = false;
-    let lockTileBoard = false;
-
-    // let points = 0;
-
-
-
-function flipTile() {
+function flipTile(event) {
     // this.classList.toggle('flipped');
+    event.stopPropagation()
     if (lockTileBoard) return;
-    if (this === $firstTile) return;
-
-    this.classList.add('flipped'); //adds conditional class from css
+    // if (this === $firstTile) return;
     
-
-        if(!hasFlippedTile) {
-            hasFlippedTile = true;
-            $firstTile = this;
-            return;
-        }
-        
-        $secondTile = this;
+    // $(event.target).addClass('flipped'); 
+    if(!$firstTile) {
+        $firstTile = $(event.target)
+        $(event.target).addClass('flipped'); 
+    }else if(!$secondTile) {
+        $secondTile = $(event.target)
+        $(event.target).addClass('flipped'); 
         lockTileBoard = true;
+        testPair();
+    // }else {
+        // $firstTile = "";
+        // $secondTile = "";
+        // lockTileBoard = true;
+        // testPair();
+
+
+    }
+
+    // let $firstTile = $(".tdCell").find(".fab") //path not working for comparing strings
+    console.log($firstTile);
+    
+    // let $secondTile = $(".tdCell").find(".fab") //path not working comparing strings
+    console.log($secondTile)
+    
+    
+    
+        // if(target2 !== target1){
+        //     target2 =event.target.id
+        //     console.log("target 2",target2)
+        // }else{
+        //     target1=event.target.id
+        //     console.log("target 1",target1)
+        // }
+
         
-        testPair(); //compare tiles flipped
+        // if(!hasFlippedTile) {
+        //     hasFlippedTile = true;
+        //     $firstTile = this;
+        //     return;
+        // }
+        
+        // $secondTile = this;
+        
+        // testPair(); //compare tiles flipped
     }
     
-    function testPair() {
-        
-        if ($firstTile === $secondTile) {
-            tilesDisabled();
+    function testPair(event) {
+       console.log($firstTile.attr("alt") , $secondTile.attr("alt") )
+       console.log($firstTile.attr("alt")  === $secondTile.attr("alt") )
+      
+
+        if ($firstTile.attr("alt") === $secondTile.attr("alt")) {
+            tilesDisabled(target1,target2);
+            
             // points + 15
             return;
         }else {
@@ -166,9 +200,12 @@ function flipTile() {
     //     this.classList.addClass('matched');
     // }
 
-    function tilesDisabled() {
-        this.classList.remove('flipped');
-        this.classList.add('matched');
+    function tilesDisabled(tile1,tile2) {
+        
+        // tile1.removeClass('tdCell');
+        // tile2.removeClass('tdCell');
+        $firstTile.off('.tdCell')
+        $secondTile.off('.tdCell')
 
         // $secondTile.classList.remove('flipped');
         // $secondTitle.classList.addClass('matched');
@@ -179,8 +216,8 @@ function flipTile() {
     function unFlipTiles() {
 
         setTimeout(() => {
-            $firstTile.classList.remove('flipped');
-            $secondTile.classList.remove('flipped');
+            $firstTile.removeClass('flipped');
+            $secondTile.removeClass('flipped');
 
             // lockTileBoard = false; //unflips tiles by removing .flipped and enables clicking on tile board //delete
             resetBoard();
@@ -197,7 +234,7 @@ function flipTile() {
     
 
 
-allTiles.forEach(tile => tile.addEventListener('click', flipTile));
+// allTiles.forEach(tile => tile.addEventListener('click', flipTile));
 
 
 
