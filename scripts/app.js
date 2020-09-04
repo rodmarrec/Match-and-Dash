@@ -120,8 +120,6 @@ $tdCellIcon.each(function(index,eachTiles) {
     let $secondTile = $(".tdCell").find(".fab") //path not working comparing strings
     console.log($secondTile)
 
-    // for( eachTile of )
-
 
     //Flip tiles and test match
     const allTiles = document.querySelectorAll('.tdCell');
@@ -155,7 +153,6 @@ function flipTile() {
     
     function testPair() {
         
-
         if ($firstTile === $secondTile) {
             tilesDisabled();
             // points + 15
@@ -165,13 +162,16 @@ function flipTile() {
         }
     }
 
-    function matchFound() {///=----------- may not need
-        this.classList.addClass('matched');
-    }
+    // function matchFound() {///=----------- may not need
+    //     this.classList.addClass('matched');
+    // }
 
     function tilesDisabled() {
-        $firstTile.on('click', matchFound);
-        $secondTile.on('click', matchFound);
+        this.classList.remove('flipped');
+        this.classList.add('matched');
+
+        // $secondTile.classList.remove('flipped');
+        // $secondTitle.classList.addClass('matched');
 
         resetBoard();
     }
