@@ -123,10 +123,10 @@ p {
     transition: transform .6s;
 }
 
-/* .tdCell.matched {
-    color: #169e8188;
-    background-color: rgba(227, 255, 241, 0.582);
-} */
+.tdCell.matched {
+    color: #9e166588;
+    background-color: rgba(170, 14, 123, 0.582);
+}
        
 footer {
     text-align: center;

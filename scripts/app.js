@@ -63,15 +63,9 @@ const start = function(){
 
 //NOTE btn GO event
 $("#btn").on('click', start)
-    // console.log("==== Get Set, Match! Dash! ======");
-    
+    // console.log("==== Get Set, Match! Dash! ======"); 
 // √
 
-let $firstTile = $(".tdCell").find(".fab")
-// console.log($firstTile);
-
-let $secondTile = $(".tdCell").find(".fab")
-// console.log($secondTile)
 
 
 /**
@@ -99,6 +93,10 @@ $tdCellIcon.each(function(index,eachTiles) {
 
     const randomClass = combinedArr.splice(Math.floor(Math.random() * combinedArr.length -1),1)[0];
 
+    const randomClassArr = combinedArr.splice(Math.floor(Math.random() * combinedArr.length-1),16)[0];
+    console.log(randomClass)
+
+
     $(eachTiles).addClass(randomClass);
     // console.log(combinedArr);
     
@@ -119,21 +117,23 @@ $tdCellIcon.each(function(index,eachTiles) {
 
 });
 
+
+    let $firstTile = $(".tdCell").find(".fab.fa")
+    // console.log($firstTile);
+
+    let $secondTile = $(".tdCell").find(".fab")
+    // console.log($secondTile)
+
+    // for( eachTile of )
+
+
     //Flip tiles and test match
     const allTiles = document.querySelectorAll('.tdCell');
 
     let hasFlippedTile = false;
     let lockTileBoard = false;
 
-    // let $firstTile = $(".tdCell").find(".fab")
-    //     // console.log($firstTile);
-    
-    // let $secondTile = $(".tdCell").find(".fab")
-    //     // console.log($secondTile)
-    
-// function matchFound() {///=----------- may not need
-//     this.classList.add('matched');
-// }
+
 
 function flipTile() {
     // this.classList.toggle('flipped');
@@ -146,10 +146,12 @@ function flipTile() {
         if(!hasFlippedTile) {
             hasFlippedTile = true;
             $firstTile = this;
+            // console.log(`1st: is this working? -- ${this}`); -- path not working
             return;
         }
         
         $secondTile = this;
+        // console.log(`2nd: is this working? -- ${this}`); -- path not working
         lockTileBoard = true;
         
         testPair(); //compare tiles flipped
@@ -164,9 +166,13 @@ function flipTile() {
         }
     }
 
+    function matchFound() {///=----------- may not need
+        this.classList.addClass('matched');
+    }
+
     function tilesDisabled() {
-        $firstTile.off('click', flipTile);
-        $secondTile.off('click', flipTile);
+        $firstTile.on('click', matchFound);
+        $secondTile.on('click', matchFound);
 
         resetBoard();
     }
@@ -199,7 +205,7 @@ allTiles.forEach(tile => tile.addEventListener('click', flipTile));
 //counting clicks function  
 function startCounter() {
     let count = 0;
-    $(".tdRow>").on('click',function() {
+    $(".tdRow").on('click',function() {
     count += 1;
     $("#counter").text(`Total Clicks: ${count}`);
     }); 
