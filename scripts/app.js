@@ -206,6 +206,8 @@ function flipTile(event) {
         // tile2.removeClass('tdCell');
         $firstTile.off('.tdCell')
         $secondTile.off('.tdCell')
+        $firstTile.addClass('matched');
+        $secondTile.addClass('matched');
 
         // $secondTile.classList.remove('flipped');
         // $secondTitle.classList.addClass('matched');
@@ -217,7 +219,10 @@ function flipTile(event) {
 
         setTimeout(() => {
             $firstTile.removeClass('flipped');
+            
+
             $secondTile.removeClass('flipped');
+            
 
             // lockTileBoard = false; //unflips tiles by removing .flipped and enables clicking on tile board //delete
             resetBoard();
@@ -263,7 +268,7 @@ startCounter()
 
 
 //timer function    /////////////////////////////////////
-let timer = 30;
+let timer = 20;
 
 //NOTE startTimer()
 function startTimer() {
