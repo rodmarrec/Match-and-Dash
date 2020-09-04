@@ -53,7 +53,7 @@ const tilesArr = [ //8 tiles
 
 
 const start = function(){
-    // startTimer();
+    startTimer();
     generateTiles();
     $("#btn").hide();
     
@@ -263,7 +263,7 @@ startCounter()
 
 
 //timer function    /////////////////////////////////////
-let timer = 20;
+let timer = 30;
 
 //NOTE startTimer()
 function startTimer() {
