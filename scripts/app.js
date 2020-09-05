@@ -53,7 +53,7 @@ const tilesArr = [ //8 tiles
 
 
 const start = function(){
-    // startTimer();
+    startTimer();
     generateTiles();
     $("#btn").hide();
     
@@ -206,6 +206,8 @@ function flipTile(event) {
         // tile2.removeClass('tdCell');
         $firstTile.off('.tdCell')
         $secondTile.off('.tdCell')
+        $firstTile.addClass('matched');
+        $secondTile.addClass('matched');
 
         // $secondTile.classList.remove('flipped');
         // $secondTitle.classList.addClass('matched');
@@ -217,7 +219,10 @@ function flipTile(event) {
 
         setTimeout(() => {
             $firstTile.removeClass('flipped');
+            
+
             $secondTile.removeClass('flipped');
+            
 
             // lockTileBoard = false; //unflips tiles by removing .flipped and enables clicking on tile board //delete
             resetBoard();
