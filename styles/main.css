@@ -124,8 +124,13 @@ p {
 }
 
 .tdCell.matched {
-    color: #9e166588;
+<<<<<<< HEAD
+    /* color: #9e166588; */
     background-color: #db7a0a;
+=======
+    color: #db7a0a;
+    background-color: rgba(170, 14, 123, 0.582);
+>>>>>>> master
 }
        
 footer {

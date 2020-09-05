@@ -268,7 +268,7 @@ startCounter()
 
 
 //timer function    /////////////////////////////////////
-let timer = 20;
+let timer = 30;
 
 //NOTE startTimer()
 function startTimer() {
